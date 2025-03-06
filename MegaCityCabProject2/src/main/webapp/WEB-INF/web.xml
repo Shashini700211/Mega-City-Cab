@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-inst..." xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web..." id="WebApp_ID" version="3.0">
+    
+    
+    <servlet>
+        <servlet-name>AddBookingServlet</servlet-name>
+        <servlet-class>servlet.AddBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBookingServlet</servlet-name>
+        <url-pattern>/addBooking</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddCarServlet</servlet-name>
+        <servlet-class>servlet.AddCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCarServlet</servlet-name>
+        <url-pattern>/addCar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ViewCarsServlet</servlet-name>
+        <servlet-class>Servlet.ViewCarsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewCarsServlet</servlet-name>
+        <url-pattern>/ViewCarsServlet</url-pattern>
+    </servlet-mapping>
+  
+
+</web-app>
