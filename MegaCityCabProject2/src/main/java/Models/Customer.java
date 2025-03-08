@@ -6,6 +6,7 @@ public class Customer {
     private String address;
     private String nic;
     private String phone;
+    private String email;
 
     // Constructor
     public Customer(String customerId, String name, String address, String nic, String phone) {
@@ -15,8 +16,18 @@ public class Customer {
         this.nic = nic;
         this.phone = phone;
     }
-
     
+    // Constructor with email
+    public Customer(String customerId, String name, String address, String nic, String phone, String email) {
+        this.customerId = customerId;
+        this.name = name;
+        this.address = address;
+        this.nic = nic;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    // Existing getters
     public String getCustomerId() 
     {
     	return customerId; 
@@ -37,8 +48,14 @@ public class Customer {
     { 
     	return phone; 
     }
-
     
+    // New getter for email
+    public String getEmail()
+    {
+        return email;
+    }
+
+    // Existing setters
     public void setCustomerId(String customerId)  
     { 
     	this.customerId = customerId; 
@@ -59,6 +76,10 @@ public class Customer {
     { 
     	this.phone = phone; 
     }
-
-
+    
+    // New setter for email
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 }

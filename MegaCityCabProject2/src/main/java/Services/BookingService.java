@@ -3,7 +3,12 @@ package Services;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import Models.Booking;
 
 
@@ -38,5 +43,104 @@ public class BookingService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // Get booking by ID
+    public Booking getBookingById(String bookingId) {
+        String query = "SELECT * FROM bookings WHERE bookingId = ?";
+
+        try (Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, bookingId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Booking(
+                        rs.getString("bookingId"),
+                        rs.getString("customerId"),
+                        rs.getString("pickupLocation"),
+                        rs.getString("destination"),
+                        rs.getString("carId"),
+                        rs.getString("driverId"),
+                        rs.getString("status")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    // Get all bookings
+    public List<Booking> getAllBookings() {
+        List<Booking> bookings = new ArrayList<>();
+        String query = "SELECT * FROM bookings";
+
+        try (Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                bookings.add(new Booking(
+                    rs.getString("bookingId"),
+                    rs.getString("customerId"),
+                    rs.getString("pickupLocation"),
+                    rs.getString("destination"),
+                    rs.getString("carId"),
+                    rs.getString("driverId"),
+                    rs.getString("status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return bookings;
+    }
+
+    // Method in BookingService
+    public Booking getBookingWithBillingById(String bookingId) {
+        String query = "SELECT * FROM bookings WHERE bookingId = ?";
+
+        try (Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, bookingId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    // Create booking with billing details
+                    Booking booking = new Booking(
+                        rs.getString("bookingId"),
+                        rs.getString("customerId"),
+                        rs.getString("pickupLocation"),
+                        rs.getString("destination"),
+                        rs.getString("carId"),
+                        rs.getString("driverId"),
+                        rs.getString("status"),
+                        rs.getTimestamp("bookingDate"),
+                        rs.getDouble("distance"),
+                        rs.getDouble("baseFare"),
+                        rs.getDouble("taxes"),
+                        rs.getDouble("discounts"),
+                        rs.getDouble("totalAmount")
+                    );
+
+                    // If some values are missing, calculate them
+                    if (booking.getTotalAmount() == 0 && booking.getDistance() > 0) {
+                        booking.calculateTotalFare();
+                    }
+
+                    return booking;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

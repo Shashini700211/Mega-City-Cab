@@ -15,7 +15,7 @@ public class CustomerService {
     }
 
     // Add a new customer
-    public void addCustomer(Customer customer) {
+    public boolean addCustomer(Customer customer) {
         String query = "INSERT INTO customers (customerId, name, address, nic, phone) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -25,8 +25,10 @@ public class CustomerService {
             stmt.setString(4, customer.getNic());
             stmt.setString(5, customer.getPhone());
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -50,6 +52,60 @@ public class CustomerService {
         }
         return customers;
     }
+    
+    // Authenticate a customer
+    public boolean authenticateCustomer(String email, String password) {
+        // For demo purposes, let's authenticate with hardcoded credentials
+        // In a real application, you would check against your database
+        
+        // This is a simple example - in production, you should use proper password hashing
+        if ("admin@example.com".equals(email) && "password123".equals(password)) {
+            return true;
+        }
+        
+        // For now, since our customer table doesn't have email/password fields,
+        // we'll use this simple check. In a real app, you would query the database.
+        String query = "SELECT * FROM customers WHERE customerId = ?";
+        
+        try (Connection conn = getConnection(); 
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                // If a record exists, we'll consider it authenticated
+                // In a real app, you'd compare hashed passwords here
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    // Get customer by ID
+    public Customer getCustomerById(String customerId) {
+        String query = "SELECT * FROM customers WHERE customerId = ?";
 
+        try (Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, customerId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Customer(
+                        rs.getString("customerId"),
+                        rs.getString("name"),
+                        rs.getString("address"),
+                        rs.getString("nic"),
+                        rs.getString("phone")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
