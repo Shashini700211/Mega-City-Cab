@@ -1,23 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Bookings</title>
-    <link rel="stylesheet" href="bookingstyles.css"> 
+    <link rel="stylesheet" href="bookingstyles.css">
 </head>
 <body>
     <h2>All Bookings</h2>
 
-    <!-- Display a message if there are no bookings -->
+    <c:if test="${not empty error}">
+        <div class="error-message">
+            <strong>${error}</strong>
+        </div>
+    </c:if>
+
     <c:if test="${empty bookings}">
         <p>No bookings available.</p>
     </c:if>
 
-    <!-- Table to display bookings -->
     <table border="1">
         <thead>
             <tr>
@@ -28,6 +31,7 @@
                 <th>Car ID</th>
                 <th>Driver ID</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +44,7 @@
                     <td>${booking.carId}</td>
                     <td>${booking.driverId}</td>
                     <td>${booking.status}</td>
+                    <td>
+                        <a href="viewBookingDetails?id=${booking.bookingId}">View Details</a>
+                    </td>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-
-       <a href="addBookingForm.jsp">Add New Booking</a>
-</body>
-</html>

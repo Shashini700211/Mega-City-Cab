@@ -12,9 +12,14 @@
       <form class="registration1" id="registration" method="post" action="addCustomer" onsubmit="return formValidation()">
         <h1 style="font-size: 30px;">CUSTOMER REGISTRATION</h1>
         <div class="input-box">
-          <input class="text-input-field" type="text" id="CustomerFullName" name="User_Username" required>
-          <label class="main-labels" for="">Enter Your Full Name Here</label>
+          <input class="text-input-field" type="text" id="CustomerFullName" name="User_FullName" required>
+          <label class="main-labels" for="CustomerFullName">Enter Your Full Name Here</label>
           <i class='i-icons bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input class="text-input-field" type="text" id="CustomerUsername" name="User_Username" required>
+          <label class="main-labels" for="CustomerUsername">Enter Your Username Here</label>
+          <i class='i-icons bx bxs-user-circle'></i>
         </div>
         <div class="input-box">
           <input class="text-input-field" type="Email" id="CustomerEmail" name="User_Email" required>
@@ -23,17 +28,17 @@
         </div>
         <div class="input-box">
           <input class="text-input-field" type="text" id="CustomerNIC" name="User_NIC" required>
-          <label class="main-labels" for="Email">Enter Your NIC Number Here</label>
+          <label class="main-labels" for="CustomerNIC">Enter Your NIC Number Here</label>
           <i class='i-icons fas fa-address-card'></i>
         </div>
         <div class="input-box">
           <input class="text-input-field" type="text" id="CustomerAddress" name="User_Address" required>
-          <label class="main-labels" for="Email">Enter Your Address Here</label>
+          <label class="main-labels" for="CustomerAddress">Enter Your Address Here</label>
           <i class='i-icons fas fa-home'></i>
         </div>
         <div class="input-box">
           <input class="text-input-field" type="number" id="CustomerTelephoneNumber" name="User_Telephone_Number" required>
-          <label class="main-labels" for="Email">Enter Your Telephone Number Here</label>
+          <label class="main-labels" for="CustomerTelephoneNumber">Enter Your Telephone Number Here</label>
           <i class='i-icons fas fa-phone-alt'></i>
         </div>
         <div class="input-box">
@@ -73,15 +78,18 @@
     <script type="text/javascript">
       function formValidation() {
         var CustomerFullName = document.getElementById('CustomerFullName').value;
+        var CustomerUsername = document.getElementById('CustomerUsername').value;
         var CustomerEmail = document.getElementById('CustomerEmail').value;
         var CustomerPassword = document.getElementById('customerpassword').value; 
         var ConfirmCustomerPassword = document.getElementById('confirmCustomerPassword').value;
 
         if (allLetter(CustomerFullName)) {
-          if (ValidateEmail(CustomerEmail)) {
-        	if (PasswordLengthLong(CustomerPassword)) {
-              if (PasswordandConfirmPasswordMatching(CustomerPassword, ConfirmCustomerPassword)) {
-                return true;
+          if (validateUsername(CustomerUsername)) {
+            if (ValidateEmail(CustomerEmail)) {
+              if (PasswordLengthLong(CustomerPassword)) {
+                if (PasswordandConfirmPasswordMatching(CustomerPassword, ConfirmCustomerPassword)) {
+                  return true;
+                }
               }
             }
           }
@@ -95,6 +103,16 @@
           return true;
         } else {
           alert("Dear Customer, Full Name must have alphabet characters and spaces only!");
+          return false;
+        }
+      }
+      
+      function validateUsername(CustomerUsername) {
+        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        if (CustomerUsername.match(usernameRegex)) {
+          return true;
+        } else {
+          alert("Username must be 3-20 characters and can only contain letters, numbers, and underscores!");
           return false;
         }
       }
