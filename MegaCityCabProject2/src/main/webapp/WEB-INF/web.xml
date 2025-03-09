@@ -2,25 +2,22 @@
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-inst..." xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web..." id="WebApp_ID" version="3.0">
     
-    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <!-- LoginServlet Mapping -->
     <servlet>
-        <servlet-name>AddBookingServlet</servlet-name>
-        <servlet-class>servlet.AddBookingServlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>Servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddBookingServlet</servlet-name>
-        <url-pattern>/addBooking</url-pattern> 
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>AddCarServlet</servlet-name>
-        <servlet-class>servlet.AddCarServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddCarServlet</servlet-name>
-        <url-pattern>/addCar</url-pattern>
-    </servlet-mapping>
-    
+
+    <!-- ViewCarsServlet Mapping -->
     <servlet>
         <servlet-name>ViewCarsServlet</servlet-name>
         <servlet-class>Servlet.ViewCarsServlet</servlet-class>
@@ -29,6 +26,51 @@
         <servlet-name>ViewCarsServlet</servlet-name>
         <url-pattern>/ViewCarsServlet</url-pattern>
     </servlet-mapping>
-  
 
+
+    <servlet>
+        <servlet-name>AddBookingServlet</servlet-name>
+        <servlet-class>Servlet.AddBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBookingServlet</servlet-name>
+        <url-pattern>/addBooking</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddCarServlet</servlet-name>
+        <servlet-class>Servlet.AddCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCarServlet</servlet-name>
+        <url-pattern>/addCar</url-pattern>
+    </servlet-mapping>
+
+    
+    <servlet>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>Servlet.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewBookingDetailsServlet</servlet-name>
+        <servlet-class>Servlet.ViewBookingDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewBookingDetailsServlet</servlet-name>
+        <url-pattern>/viewBookingDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PrintBillServlet</servlet-name>
+        <servlet-class>Servlet.PrintBillServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PrintBillServlet</servlet-name>
+        <url-pattern>/printBill</url-pattern>
+    </servlet-mapping>
 </web-app>
