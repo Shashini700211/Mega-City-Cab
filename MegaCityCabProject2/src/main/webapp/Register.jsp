@@ -4,6 +4,7 @@
 <html lang="en">
   <head>
     <title>Customer Register</title>
+     <link rel="stylesheet" href="RegisterStyles.css">
   </head>
   
   <body>

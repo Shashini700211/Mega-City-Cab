@@ -14,14 +14,18 @@
 <html lang="en">
   <head>
     <title>Customer Login</title>
+    <link rel="stylesheet" href="LoginStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
   </head>
+  
   <body>
     <div class="form-wrapper sign up">
       <form class="registration1" id="registration" method="post" action="login" onsubmit="return formValidation()">
         <h1 style="font-size: 30px;">CUSTOMER LOGIN</h1>
         <div class="input-box">
           <input class="text-input-field" type="text" id="CustomerUsername" name="username" required>
-          <label class="main-labels" for="CustomerUsername">Enter Your UserName Here</label>
+          <label class="main-labels" for="CustomerUsername">Enter Your Username Here</label>
           <i class='i-icons bx bxs-user'></i>
         </div>
         <div class="input-box">
@@ -35,7 +39,7 @@
 
         <button class="register-button" style="font-size:24px" type="submit" name="submit">Login</button>
         <div class="signIn-link">
-          <p>Do not have an account?<a href="Register.jsp"class="signInBtn"> Sign Up</a>
+          <p>Do not have an account?<a href="Register.jsp"class="signInBtn"> Sign In</a>
         </p>
         </div>
         <% if(request.getAttribute("error") != null) { %>
