@@ -8,7 +8,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>View Cars</title>
-    <link rel="stylesheet" type="text/css" href="css/viewCarsstyles.css">
+    <link rel="stylesheet" type="text/css" href="viewCarsstyles.css">
 </head>
 
 <body>

@@ -68,7 +68,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Register Customer</h2>
+        <h2>Add Customer Form</h2>
         
         <% if(request.getAttribute("error") != null) { %>
             <p class="error-message"><%= request.getAttribute("error") %></p>
@@ -100,7 +100,7 @@
                 <input type="text" id="phone" name="phone" required>
             </div>
             
-            <button type="submit">Register</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>

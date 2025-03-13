@@ -72,10 +72,12 @@
     </style>
 </head>
 <body>
+
     <%
-    // Check if user is logged in
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect("login");
+    // Check if user session exists
+    Object user = session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect("login.jsp"); // Ensure this is the correct login page
         return;
     }
     %>

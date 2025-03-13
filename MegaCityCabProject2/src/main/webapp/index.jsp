@@ -25,7 +25,7 @@
             <a href="#" class="logo">
               <img src="images/logo-white.png" alt="logo" class="logo-white" />
               <img src="images/logo-dark.png" alt="logo" class="logo-dark" />
-              <span>Car Rental</span>
+              <span>Mega-City Car Rental</span>
             </a>
           </div>
           <div class="nav__menu__btn" id="menu-btn">
@@ -49,7 +49,7 @@
           <img src="images/header.png" alt="header" />
         </div>
         <div class="header__content">
-          <h2>👍 100% Trusted car rental platform in India</h2>
+          <h2>👍 100% Trusted car rental platform in Sri Lanka</h2>
           <h1>FAST AND EASY WAY TO RENT A CAR</h1>
           <p class="section__description">
             Discover a seamless car rental experience with us. Choose from a
@@ -172,7 +172,7 @@
             </div>
             <hr />
             <div class="deals__card__footer">
-              <h3>Rs.15 000<span>/Per Day</span></h3>
+              <h3>Rs.80 000<span>/Per Day</span></h3>
               <a href="#">
                 Rent Now
                 <span><i class="ri-arrow-right-line"></i></span>
@@ -240,7 +240,7 @@
             </div>
             <hr />
             <div class="deals__card__footer">
-              <h3>Rs.50 000<span>/Per Day</span></h3>
+              <h3>Rs.80 000<span>/Per Day</span></h3>
               <a href="#">
                 Rent Now
                 <span><i class="ri-arrow-right-line"></i></span>
