@@ -16,6 +16,15 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
+         body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: url('images/background.jpg') no-repeat center center/cover;
+                padding: 20px;
+              }
+        
         h2 {
             color: #333;
             text-align: center;

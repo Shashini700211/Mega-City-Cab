@@ -14,9 +14,23 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f9f9f9;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: url('images/background.jpg') no-repeat center center/cover;
+                padding: 20px;
+              }
+        
 
         .form-section {
             margin-bottom: 20px;
@@ -72,15 +86,6 @@
     </style>
 </head>
 <body>
-
-    <%
-    // Check if user session exists
-    Object user = session.getAttribute("user");
-    if (user == null) {
-        response.sendRedirect("login.jsp"); // Ensure this is the correct login page
-        return;
-    }
-    %>
 
     <h2>New Customer Booking</h2>
 

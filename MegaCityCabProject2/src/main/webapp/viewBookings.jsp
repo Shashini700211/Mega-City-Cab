@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Bookings</title>
-    <link rel="stylesheet" href="bookingstyles.css">
+    <link rel="stylesheet" href="ViewBookingStyles.css">
 </head>
 <body>
     <h2>All Bookings</h2>
@@ -48,3 +48,5 @@
                         <a href="viewBookingDetails?id=${booking.bookingId}">View Details</a>
                     </td>
                 </tr>
+           </c:forEach>
+       </tbody>
